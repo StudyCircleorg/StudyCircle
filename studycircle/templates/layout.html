@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Project</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+</head>
+<body>
+    <header>
+        <!-- common header -->
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- This block will be overridden by child templates -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- common footer -->
+    </footer>
+</body>
+</html>
