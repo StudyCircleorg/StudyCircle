@@ -70,3 +70,8 @@ def profile_view(request):
     return render(request, "users/profile.html", {
         "user": request.user
     })
+
+def edit_profile_view(request):
+    return render(request, "users/edit_profile.html", {
+        "user": request.user
+    })

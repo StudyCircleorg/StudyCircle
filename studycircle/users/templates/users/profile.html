@@ -8,5 +8,9 @@
     <p>Email: {{user.email}}</p>
     <p>Major: {{user.major}}</p>
     <p>Degree: {{user.degree}}</p>
+
+    <a href="{% url 'users:edit_profile' %}" class="secondary-font">
+        <button type="button">Edit Profile</button>
+    </a>
     <!-- You can add more user details here -->
 {% endblock %}
