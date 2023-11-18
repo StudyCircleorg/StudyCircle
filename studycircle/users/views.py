@@ -30,7 +30,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("core:index"))
 
 
 def register(request):
@@ -55,6 +55,11 @@ def register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("core:index"))
     else:
         return render(request, "users/register.html")
+    
+def profile_view(request):
+    return render(request, "users/profile.html", {
+        "user": request.user
+    })

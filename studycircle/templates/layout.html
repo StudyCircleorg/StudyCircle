@@ -17,11 +17,10 @@
         </div>
     
         <div class="links">
-            <div class="profile-link">
-                <a href="" class="secondary-font">Profile</a>
-            </div>
-    
             {% if user.is_authenticated %}
+                <div class="profile-link">
+                    <a href="{% url 'users:profile' %}" class="secondary-font">Profile</a>
+                </div>
                 <div class="auth-link">
                     <a href="{% url 'users:logout' %}" class="secondary-font">Logout</a>
                 </div>
