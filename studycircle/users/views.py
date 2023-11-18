@@ -8,13 +8,6 @@ from django.contrib.auth.decorators import login_required
 from studycircle.users.models import User
 
 # Create your views here.
-def index(request):
-
-    return render(request, "users/index.html", {
-
-    })
-
-
 def login_view(request):
     if request.method == "POST":
 
