@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from studycircle.users.models import User
+from .models import User
 
 # Create your views here.
 def login_view(request):

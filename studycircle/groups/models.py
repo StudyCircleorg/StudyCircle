@@ -1,7 +1,7 @@
 from django.db import models
 
-from studycircle.courses.models import Course
-from studycircle.users.models import User
+from courses.models import Course
+from users.models import User
 
 # Create your models here.
 class Group(models.Model):

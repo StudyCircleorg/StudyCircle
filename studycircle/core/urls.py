@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
+app_name = 'core'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),  # URL patterns for the core app
-    path('users/', include('users.urls')),  # URL patterns for the users app
+    path('', views.index, name='index'),
 ]
