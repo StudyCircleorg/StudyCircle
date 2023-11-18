@@ -34,6 +34,10 @@ main {
     padding: 10px 20px; /* Padding for spacing */
     text-align: center; /* Center the text inside the footer */
 }
+.footer p {
+    color: #0984B5;
+    font-weight: bold;
+}
 
 .nav-title {
     display: flex;
@@ -87,5 +91,23 @@ a:hover {
 
 .secondary-font {
     color: #39ACE7;
+}
+
+.nav-title img {
+    max-width: 75px; /* Set the maximum width */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 50%;
+}
+.nav-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+}
+
+.nav-title h1 {
+    font-size: 32px;
+    
+
 }
 
