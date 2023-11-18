@@ -1,6 +1,20 @@
+html {
+    height: 100%; /* Set the height to 100% for the root element */
+}
+
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #E8F5FF;
+    min-height: 100%; /* Minimum height to 100% to ensure it stretches full height */
+    display: flex;
+    flex-direction: column; /* Stack the main content and footer */
+    margin: 0; /* Remove default margin */
+}
+
+main {
+    flex: 1;
+    padding: 20px;
 }
 
 .nav {
@@ -15,8 +29,10 @@ body {
     flex: 1;
 }
 
-.nav-space {
-    /* Empty block for spacing */
+.footer {
+    background-color: #89DFFF; /* Or any color you wish to use */
+    padding: 10px 20px; /* Padding for spacing */
+    text-align: center; /* Center the text inside the footer */
 }
 
 .nav-title {
