@@ -1,3 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E8F5FF;
 }
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #89DFFF;
+    padding: 10px 20px;
+}
+
+.nav-space, .nav-title, .links {
+    flex: 1;
+}
+
+.nav-space {
+    /* Empty block for spacing */
+}
+
+.nav-title {
+    display: flex;
+    justify-content: center; /* Center the title */
+}
+
+.nav-title h1 {
+    color: #0984B5;
+    margin: 0;
+    font-size: 24px;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
+}
+
+.profile-link, .auth-link {
+    background-color: #39ACE7; /* Blue background for profile */
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.auth-link {
+    background-color: #FFFFFF; /* White background for auth link */
+}
+
+.links a, .links a:visited {
+    color: #0984B5;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Ensure anchor tags have no underline by default */
+a, a:visited {
+    text-decoration: none;
+}
+
+/* Apply hover effect for all anchor tags */
+a:hover {
+    text-decoration: underline;
+}
+.primary-font {
+    color: #0984B5;
+}
+
+.secondary-font {
+    color: #39ACE7;
+}
+

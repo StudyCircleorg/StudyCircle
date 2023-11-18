@@ -9,18 +9,32 @@
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <!-- Navigation bar, you can put links here -->
-            <a href="{% url 'core:index' %}">Home</a>
+    <div class="nav">
+        <div class="nav-space"></div> <!-- Empty div for spacing -->
+    
+        <div class="nav-title">
+            <a href="{% url 'core:index' %}"><h1 class="primary-font">Study Circle</h1></a>
+        </div>
+    
+        <div class="links">
+            <div class="profile-link">
+                <a href="" class="secondary-font">Profile</a>
+            </div>
+    
             {% if user.is_authenticated %}
-            <a href="{% url 'users:logout' %}">Logout</a>
+                <div class="auth-link">
+                    <a href="{% url 'users:logout' %}" class="secondary-font">Logout</a>
+                </div>
             {% else %}
-            <a href="{% url 'users:login' %}">Login</a>
+                <div class="auth-link">
+                    <a href="{% url 'users:login' %}" class="secondary-font">Login</a>
+                </div>
             {% endif %}
-            <!-- Add other navigation links here -->
-        </nav>
-    </header>
+        </div>
+    </div>
+    
+    </div>
+    
 
     <main>
         {% block content %}
@@ -28,9 +42,9 @@
         {% endblock %}
     </main>
 
-    <footer>
+    <div class="footer">
         <!-- common footer -->
         <p>&copy; 2023 My Django Project</p>
-    </footer>
+    </div>
 </body>
 </html>
