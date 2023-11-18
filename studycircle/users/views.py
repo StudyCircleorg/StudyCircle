@@ -36,13 +36,20 @@ def logout_view(request):
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
+
+        # Ensure ualberta.ca domain validation        
         email = request.POST["email"]
+        domain = email.split("@")[1]
+        if domain != "ualberta.ca":
+            return render(request, "users/register.html", {
+                "message": "Invalid email (must use UofA email)."
+            })
 
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "auctions/register.html", {
+            return render(request, "users/register.html", {
                 "message": "Passwords must match."
             })
 
