@@ -5,57 +5,66 @@
 <div class="create-group-container">
     <form method="post" action="{% url 'groups:create_group' %}">
         {% csrf_token %}
-        <div class="left-group">
-            <div class="left-group-div">
-                <div class="form-group">
-                    {{ form.name.label_tag }} {{ form.name }}
-                </div>
-                <div class="form-group">
-                    {{ form.meeting_times.label_tag }} {{ form.meeting_times }}
-                </div>
-                <div class="form-group">
-                    {{ form.days.label_tag }} {{ form.days }}
-                </div>
-            </div>
-            <div class="left-group-div">
-                <div class="form-group">
-                    {{ form.course_department.label_tag }} {{ form.course_department }}
-                </div>
-                <div class="form-group">
-                    {{ form.course_level.label_tag }} {{ form.course_level }}
-                </div>
-            </div>
-        </div>
 
-        <div class="right-group">
-            <div class="right-group-div">
-                <div class="form-group">
-                    <label>Session Types:</label>
-                    {% for choice in form.session_type %}
-                        <div class="form-check">
-                            {{ choice.tag }} {{ choice.choice_label }}
-                        </div>
-                    {% endfor %}
+
+
+        <div class="flex-parent-element">
+            <div class="flex-child-element">
+                
+                <div class="left-group-div">
+                    <div class="form-group">
+                        {{ form.name.label_tag }} {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.meeting_times.label_tag }} {{ form.meeting_times }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.days.label_tag }} {{ form.days }}
+                    </div>
                 </div>
-            </div>
-            <div class="right-group-div">
-                <div class="form-group">
-                    <label>Group Dynamics Preference:</label>
-                    {% for choice in form.dynamics %}
-                        <div class="form-check">
-                            {{ choice.tag }} {{ choice.choice_label }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    {{ form.location.label_tag }} {{ form.location }}
+                <div class="left-group-div">
+                    <div class="form-group">
+                        {{ form.course_department.label_tag }} {{ form.course_department }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.course_level.label_tag }} {{ form.course_level }}
+                    </div>
                 </div>
             </div>
 
-            <div class="right-group-div">
-                <button type="submit" class="btn btn-primary">Finalize and Create Group</button>
+            <div class="flex-child-element">
+                <div class="right-group-div">
+                    <div class="form-group">
+                        <label>Session Types:</label>
+                        {% for choice in form.session_type %}
+                            <div class="form-check">
+                                {{ choice.tag }} {{ choice.choice_label }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="right-group-div">
+                    <div class="form-group">
+                        <label>Group Dynamics Preference:</label>
+                        {% for choice in form.dynamics %}
+                            <div class="form-check">
+                                {{ choice.tag }} {{ choice.choice_label }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.location.label_tag }} {{ form.location }}
+                    </div>
+                </div>
+    
+                <div class="right-group-div">
+                    <button type="submit" class="btn btn-primary">Finalize and Create Group</button>
+                </div>
             </div>
         </div>
     </form>
 </div>
+
+
+
 {% endblock %}

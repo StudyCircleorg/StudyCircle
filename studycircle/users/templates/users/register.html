@@ -9,19 +9,19 @@
         <div>{{ message }}</div>
     {% endif %}
 
-    <form action="{% url 'users:register' %}" method="post">
+    <form action="{% url 'users:register' %}" method="post" class="register_input">
         {% csrf_token %}
         <div class="form-group">
-            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+            <input class="form-control" class="register_input" autofocus type="text" name="username" placeholder="Username">
         </div>
         <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="UAlberta Email Address">
+            <input class="form-control" class="register_input" type="email" name="email" placeholder="UAlberta Email Address">
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
+            <input class="form-control" class="register_input" type="password" name="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+            <input class="form-control" class="register_input" type="password" name="confirmation" placeholder="Confirm Password">
         </div>
         <input class="btn btn-primary" type="submit" value="Register">
     </form>
