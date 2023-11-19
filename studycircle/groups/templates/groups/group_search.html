@@ -44,7 +44,6 @@
             <strong>{{ group.name }}</strong><br>
             Dynamics: {{ group.get_dynamics_display }}<br>
             Location: {{ group.get_location_display }}<br>
-            Course: {{ group.groupcourse.course.department }} {{ group.groupcourse.course.level }}
         </div>
         {% empty %}
         <div>No groups found.</div>
