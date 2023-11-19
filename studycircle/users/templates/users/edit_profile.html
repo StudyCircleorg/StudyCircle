@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}Profile{% endblock %}
 
@@ -9,7 +10,7 @@
 
         <div class="user-container">
             <div class="user-profile">
-                <div><img src="" alt="Profile Picture"></div>
+                <div><img src="{% static 'images/default_pfp.jpg' %}" alt="Profile Picture"></div>
 
                 <div><button class="btn btn-primary">Browse...</button></div>
 
@@ -23,10 +24,15 @@
                 </div>
                 <p>{{user.email}}</p>
                 <input autofocus class="form-control" type="text" name="new_username" placeholder="Change Username">
+                <br>
                 <input autofocus class="form-control" type="text" name="major" placeholder="Add Major">
+                <br>
                 <input autofocus class="form-control" type="text" name="degree" placeholder="Add Degree">
+                <br>
                 <input autofocus class="form-control" type="text" name="DOB" placeholder="Date of Birth">
+                <br>
                 <input autofocus class="form-control" type="text" name="degree" placeholder="Gender">
+                <br>
 
                 <div class="courses-groups">
                     <div class="course">
@@ -40,7 +46,9 @@
                     
                 </div>
 
-                <input class="btn btn-primary" type="submit" value="Save Changes">
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Save Changes">
+                </div>
             </div>
         </div>
     </form>

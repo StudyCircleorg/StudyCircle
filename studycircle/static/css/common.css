@@ -232,17 +232,21 @@ nav-title h1 {
     flex-direction: column; 
     padding: 20px;
     width: 150%;
+    margin-bottom: 20px;
 
 }
 
 .name {
     display: flex;
-    flex-direction: row;  
+    flex-direction: row; 
+    flex-grow: 1;
 }
 
 .courses-groups {
     display: flex;
     flex-direction: row;  
+    justify-content: space-evenly;
+    border: 2px solid purple;
 }
 
 
