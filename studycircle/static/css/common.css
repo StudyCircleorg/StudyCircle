@@ -114,19 +114,17 @@ nav-title h1 {
 }
 
 .create-group-container {
-    border: 2px solid black;
     display: flex;
 }
 
 .flex-parent-element {
     display: flex;
     width: 241%;
-    border: 2px solid red;
+    
   }
   
   .flex-child-element {
     flex: 1;
-    border: 2px solid blueviolet;
     margin: 10px;
   }
   
