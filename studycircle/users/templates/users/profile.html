@@ -4,13 +4,13 @@
 
 {% block content %}
     <h2>User Profile</h2>
-    <p>Username: {{ user.username }}</p>
+    <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
     <p>Major: {{user.major}}</p>
     <p>Degree: {{user.degree}}</p>
 
     <a href="{% url 'users:edit_profile' %}" class="secondary-font">
-        <button type="button">Edit Profile</button>
+        <input class="btn btn-primary" type="submit" value="Edit Profile">
     </a>
     <!-- You can add more user details here -->
 {% endblock %}

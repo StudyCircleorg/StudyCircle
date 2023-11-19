@@ -72,6 +72,40 @@ def profile_view(request):
     })
 
 def edit_profile_view(request):
-    return render(request, "users/edit_profile.html", {
-        "user": request.user
-    })
+    if request.method == "POST":
+        new_username = request.POST["new_username"]
+        major = request.POST["major"]
+        degree = request.POST["degree"]
+        user = request.user
+
+        # Add Major and Degree
+        user.major = major
+        user.degree = degree
+
+        # Check if the new username is different from the current one
+        if new_username != request.user.username:
+            # Check if the new username is available
+            if User.objects.filter(username=new_username).exists():
+                return render(request, "users/edit_profile.html", {
+                    "user": request.user,
+                    "message": "Username is already taken."
+                })
+
+            # Update Username
+            user.username = new_username
+            user.save()
+
+            return render(request, "users/profile.html", {
+                "user": request.user,
+                "message": "Username, Major and Degree successfully changed."
+            })
+        
+        else:
+            return render(request, "users/edit_profile.html", {
+                "user": request.user,
+                "message": "Username needs to be different from previous Username."
+            })
+    else:
+        return render(request, "users/edit_profile.html", {
+            "user": request.user
+        })
