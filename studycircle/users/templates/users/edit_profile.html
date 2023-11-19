@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <h2>User Profile</h2>
+    <form action="{% url 'users:edit_profile' %}" method="post">
+        {% csrf_token %} <!-- Include the CSRF token -->
+
+        <p>Username: <input autofocus class="form-control" type="text" name="new_username" placeholder="Change Username"></p>
+        <p>Email: {{user.email}}</p>
+        <p>Major: <input autofocus class="form-control" type="text" name="major" placeholder="Add Major"></p>
+        <p>Degree: <input autofocus class="form-control" type="text" name="degree" placeholder="Add Degree"></p>
+
+        <input class="btn btn-primary" type="submit" value="Update">
+    </form>
+    <!-- You can add more user details here -->
+{% endblock %}
