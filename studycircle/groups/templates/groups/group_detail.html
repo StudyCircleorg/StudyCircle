@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ group.name }}</h1>
+    <p><strong>Meeting Times:</strong> {{ group.meeting_times }}</p>
+    <p><strong>Days:</strong> {{ group.days }}</p>
+    <p><strong>Session Type:</strong> {{ group.session_type }}</p>
+    <p><strong>Group Dynamics:</strong> {{ group.dynamics }}</p>
+    <p><strong>Location:</strong> {{ group.location }}</p>
+    <p><strong>QR Code:</strong> <img src="" alt="Group QR Code"></p>
+
+    <!-- Uncomment if you have related courses and members information -->
+    
+    <h2>Courses</h2>
+    <ul>
+        {% for course in courses %}
+            <li>{{ course.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Members</h2>
+    <ul>
+        {% for member in members %}
+            <li>{{ member.user.username }}</li>
+        {% endfor %}
+    </ul>
+   
+
+    <!-- Logic for joining the group could also go here -->
+</div>
+{% endblock %}
