@@ -190,3 +190,91 @@ nav-title h1 {
     }
 }
 
+.edit-profile-form {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-courses, .profile-groups {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 48%;
+    margin-bottom: 30px;
+}
+
+/* Flex container for courses and groups */
+.course-group-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Style the list inside the courses and groups */
+.profile-list {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-list li {
+    background-color: #F0F0F0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Style for the 'Add course' button */
+.add-course-btn {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-course-btn:hover {
+    background-color: #004494;
+}
+
+/* Add custom styles for form inputs */
+.form-control {
+    border-radius: 20px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+/* Style the save changes button */
+.btn-primary {
+    border-radius: 20px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Custom media query to adjust layout on smaller screens */
+@media (max-width: 768px) {
+    .course-group-container {
+        flex-direction: column;
+    }
+
+    .profile-courses, .profile-groups {
+        width: 100%;
+    }
+}
+
+.container-profile-page {
+    display: flex;
+    margin: 16px;
+    padding: 10px;
+    gap: 16px;
+}

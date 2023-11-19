@@ -4,13 +4,51 @@
 
 {% block content %}
     <h2>User Profile</h2>
-    <p>Username: {{user.username}}</p>
-    <p>Email: {{user.email}}</p>
-    <p>Major: {{user.major}}</p>
-    <p>Degree: {{user.degree}}</p>
 
-    <a href="{% url 'users:edit_profile' %}" class="secondary-font">
-        <input class="btn btn-primary" type="submit" value="Edit Profile">
-    </a>
-    <!-- You can add more user details here -->
+    <div class="edit-profile-form">
+        <form action="{% url 'users:edit_profile' %}" method="post">
+            {% csrf_token %} <!-- Include the CSRF token -->
+    
+            <p>Username: <input class="form-control" type="text" name="new_username" placeholder="Change Username" value="{{ user.username }}"></p>
+            <p>Email: <input class="form-control" type="email" name="new_email" placeholder="Change Email" value="{{ user.email }}"></p>
+            <p>Major: <input class="form-control" type="text" name="major" placeholder="Change Major" value="{{ user.major }}"></p>
+            <p>Degree: <input class="form-control" type="text" name="degree" placeholder="Change Degree" value="{{ user.degree }}"></p>
+           
+            <input class="btn btn-primary" type="submit" value="Save Changes">
+        </form> 
+    </div>
+    
+    <div class="container-profile-page">
+        <div class="profile-courses">
+            <h3>Enrolled Courses</h3>
+            <ul class="profile-list">
+                {% for user_course in enrolled_courses %}
+                    <li>{{ user_course.course }}</li>
+                {% empty %}
+                    <li>No courses enrolled.</li>
+                {% endfor %}
+            </ul>
+            <h3>Add a Course</h3>
+            <form action="{% url 'users:add_course' %}" method="post">
+                {% csrf_token %}
+                <select class="form-control" name="course_id">
+                    {% for course in Course.objects.all %}
+                        <option value="{{ course.id }}">{{ course }}</option>
+                    {% endfor %}
+                </select>
+                <input class="btn btn-primary" type="submit" value="Add Course">
+            </form>
+        </div>
+        
+        <div class="profile-groups">
+            <h3>Study Groups</h3>
+            <ul class="profile-list">
+                {% for user_group in enrolled_groups %}
+                    <li>{{ user_group.group }}</li>
+                {% empty %}
+                    <li>No study groups joined.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
