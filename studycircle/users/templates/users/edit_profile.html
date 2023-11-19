@@ -2,17 +2,47 @@
 
 {% block title %}Profile{% endblock %}
 
+
 {% block content %}
-    <h2>User Profile</h2>
     <form action="{% url 'users:edit_profile' %}" method="post">
         {% csrf_token %} <!-- Include the CSRF token -->
 
-        <p>Username: <input autofocus class="form-control" type="text" name="new_username" placeholder="Change Username"></p>
-        <p>Email: {{user.email}}</p>
-        <p>Major: <input autofocus class="form-control" type="text" name="major" placeholder="Add Major"></p>
-        <p>Degree: <input autofocus class="form-control" type="text" name="degree" placeholder="Add Degree"></p>
+        <div class="user-container">
+            <div class="user-profile">
+                <div><img src="" alt="Profile Picture"></div>
 
-        <input class="btn btn-primary" type="submit" value="Update">
+                <div><button class="btn btn-primary">Browse...</button></div>
+
+                <div><button class="btn btn-primary">Delete Image</button></div>
+            </div>
+
+            <div class="user-details">
+                <div class="name">
+                    <input autofocus class="form-control" type="text" name="fname" placeholder="First Name">
+                    <input autofocus class="form-control" type="text" name="lname" placeholder="Last Name"> 
+                </div>
+                <p>{{user.email}}</p>
+                <input autofocus class="form-control" type="text" name="new_username" placeholder="Change Username">
+                <input autofocus class="form-control" type="text" name="major" placeholder="Add Major">
+                <input autofocus class="form-control" type="text" name="degree" placeholder="Add Degree">
+                <input autofocus class="form-control" type="text" name="DOB" placeholder="Date of Birth">
+                <input autofocus class="form-control" type="text" name="degree" placeholder="Gender">
+
+                <div class="courses-groups">
+                    <div class="course">
+                        <p>Enrolled Courses</p>
+                    </div>
+                    
+                    <div class="groups">
+                        <p>Study Groups</p>
+                    </div>
+               
+                    
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Save Changes">
+            </div>
+        </div>
     </form>
     <!-- You can add more user details here -->
 {% endblock %}

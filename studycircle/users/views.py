@@ -101,7 +101,7 @@ def edit_profile_view(request):
             })
         
         else:
-            return render(request, "users/edit_profile.html", {
+            return render(request, "users/profile.html", {
                 "user": request.user,
                 "message": "Username needs to be different from previous Username."
             })

@@ -4,10 +4,18 @@
 
 {% block content %}
     <h2>User Profile</h2>
-    <p>Username: {{user.username}}</p>
+    <p>First Name: {{user.major}}</p>
+    <p>Last Name: {{user.major}}</p>
     <p>Email: {{user.email}}</p>
+    <p>Date of Birth: {{user.major}}</p>
     <p>Major: {{user.major}}</p>
     <p>Degree: {{user.degree}}</p>
+    <p>Gender: {{user.major}}</p>
+    <p>Username: {{user.username}}</p>
+
+    <p>Enrolled Courses</p>
+
+    <p>Study Groups</p>
 
     <a href="{% url 'users:edit_profile' %}" class="secondary-font">
         <input class="btn btn-primary" type="submit" value="Edit Profile">

@@ -190,3 +190,69 @@ nav-title h1 {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/* Profile and Edit Profile */
+
+.user-container {
+    border: 2px solid red; /* Border color - you can change it to your preferred color */ 
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    /* justify-content: space-between; */
+    /* align-items: center; */
+}
+
+.user-profile {
+    border: 2px solid blue; /* Border color - you can change it to your preferred color */ 
+
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    padding: 20px;
+    width: 25%;
+
+}
+
+.user-details {
+    border: 2px solid green;
+
+    display: flex;
+    flex-direction: column; 
+    padding: 20px;
+    width: 150%;
+
+}
+
+.name {
+    display: flex;
+    flex-direction: row;  
+}
+
+.courses-groups {
+    display: flex;
+    flex-direction: row;  
+}
+
+
+
+img {
+    width: 100px; /* Set the max width for the profile picture */
+    height: 100px; /* Set the max height for the profile picture */
+}
+
+.btn {
+    margin-top: 5px; /* Adjust the margin as needed */
+}
+
