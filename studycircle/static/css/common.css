@@ -105,9 +105,88 @@ a:hover {
 
 }
 
-.nav-title h1 {
+nav-title h1 {
     font-size: 32px;
-    
+}
 
+.create-group-heading {
+    text-align: center;
+}
+
+.create-group-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Separates the child divs on both ends */
+    margin: 0 auto;
+    max-width: 1024px; /* Adjust as needed */
+    padding: 20px; /* Added padding for some space inside the container */
+}
+
+.left-group,
+.right-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows both sides to take equal space */
+    margin: 0 10px; /* Adds a little space between the two groups */
+}
+
+.left-group-div,
+.right-group-div {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    padding: 10px 15px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+/* Additional styling for checkboxes and radio buttons */
+.form-check input {
+    margin-right: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .create-group-container {
+        flex-direction: column; /* Stacks the divs on smaller screens */
+        align-items: center; /* Centers the stacked divs */
+    }
+
+    .left-group,
+    .right-group {
+        flex-basis: 100%; /* Full width for small screens */
+        margin: 10px 0; /* Adjust margin for vertical stacking */
+    }
 }
 
