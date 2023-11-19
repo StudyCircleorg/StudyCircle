@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}Group Search{% endblock %}
+
+{% block content %}
+<div style="display: flex;">
+    <!-- Filters on the left with a nice div -->
+    <div style="background-color: #F0F0F0; padding: 20px; width: 30%; min-width: 200px;">
+        <h2>Filter</h2>
+        <form>
+            <select name="dynamics" onchange="this.form.submit()">
+                <option value="">Filter by dynamics</option>
+                {% for dynamics, name in dynamics_choices %}
+                <option value="{{ dynamics }}" {% if filter_dynamics == dynamics %} selected {% endif %}>
+                    {{ name }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <select name="location" onchange="this.form.submit()">
+                <option value="">Filter by location</option>
+                {% for location, name in location_choices %}
+                <option value="{{ location }}" {% if filter_location == location %} selected {% endif %}>
+                    {{ name }}
+                </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    <!-- Results on the right with a background color -->
+    <div style="background-color: #B9DFFF; padding: 20px; width: 70%; min-width: 400px;">
+        <div>
+            <!-- Search bar at the top -->
+            <form action="{% url 'groups:group_search' %}" method="get">
+                <input type="text" name="search" value="{{ search_query }}" placeholder="Search groups">
+                <input type="submit" value="Search" style="background-color: #0984B5; color: white;">
+            </form>
+        </div>
+
+        <h1>Results:</h1>
+        {% for group in groups %}
+        <div>
+            <strong>{{ group.name }}</strong><br>
+            Dynamics: {{ group.get_dynamics_display }}<br>
+            Location: {{ group.get_location_display }}<br>
+            Course: {{ group.groupcourse.course.department }} {{ group.groupcourse.course.level }}
+        </div>
+        {% empty %}
+        <div>No groups found.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

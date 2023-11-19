@@ -1,32 +1,34 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>{{ group.name }}</h1>
-    <p><strong>Meeting Times:</strong> {{ group.meeting_times }}</p>
-    <p><strong>Days:</strong> {{ group.days }}</p>
-    <p><strong>Session Type:</strong> {{ group.session_type }}</p>
-    <p><strong>Group Dynamics:</strong> {{ group.dynamics }}</p>
-    <p><strong>Location:</strong> {{ group.location }}</p>
-    <p><strong>QR Code:</strong> <img src="" alt="Group QR Code"></p>
 
-    <!-- Uncomment if you have related courses and members information -->
+<div style="display: flex; justify-content: center; align-items: center; background-color: #B9DFFF; padding: 20px;">
+    <!-- Div for group name, bio, and join/leave button -->
+    <div style="flex: 1; margin-right: 20px; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <h1>{{ group.name }}</h1>
+        <p>{{ group.bio }}</p>
+        {% if not already_member %}
+            <form method="post" action="{% url 'groups:join_group' group_id=group.id %}">
+                {% csrf_token %}
+                <button type="submit" style="padding: 10px 20px; background-color: #39ACE7; border: none; color: white; border-radius: 5px; cursor: pointer;">Join Group</button>
+            </form>
+        {% else %}
+            <form method="post" action="{% url 'groups:leave_group' group_id=group.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" style="padding: 10px 20px; background-color: #39ACE7; border: none; color: white; border-radius: 5px; cursor: pointer;">Leave Group</button>
+            </form>
+        {% endif %}
+    </div>
 
-    <h2>Courses</h2>
-    <ul>
-        {% for course in courses %}
-            <li>{{ course.name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Members</h2>
-    <ul>
-        {% for member in members %}
-            <li>{{ member.user.username }}</li>
-        {% endfor %}
-    </ul>
-
-
-    <!-- Logic for joining the group could also go here -->
+    <!-- Div for meeting date, time, location, session type, and dynamics -->
+    <div style="flex: 1; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <p>Meeting Date: {{ group.meeting_date }}</p>
+        <p>Meeting Time: {{ group.meeting_time }}</p>
+        <p>Location: {{ group.get_location_display }}</p>
+        <p>Session Type: {{ group.get_session_type_display }}</p>
+        <p>Dynamics: {{ group.get_dynamics_display }}</p>
+    </div>
 </div>
+
 {% endblock %}

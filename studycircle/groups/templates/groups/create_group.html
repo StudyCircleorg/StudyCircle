@@ -1,60 +1,22 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1 class="create-group-heading">Create Your Own Study Group 📚</h1>
-<div class="create-group-container">
-    <form method="post" action="{% url 'groups:create_group' %}">
+<h1 class="create-group-heading primary-font">Create Your Own Study Group 📚</h1>
+<div class="create-group-container d-flex justify-content-center">
+    <form method="post" action="{% url 'groups:create_group' %}" class="w-75">
         {% csrf_token %}
-        <div class="left-group">
-            <div class="left-group-div">
-                <div class="form-group">
-                    {{ form.name.label_tag }} {{ form.name }}
-                </div>
-                <div class="form-group">
-                    {{ form.meeting_times.label_tag }} {{ form.meeting_times }}
-                </div>
-                <div class="form-group">
-                    {{ form.days.label_tag }} {{ form.days }}
-                </div>
-            </div>
-            <div class="left-group-div">
-                <div class="form-group">
-                    {{ form.course_department.label_tag }} {{ form.course_department }}
-                </div>
-                <div class="form-group">
-                    {{ form.course_level.label_tag }} {{ form.course_level }}
-                </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% for field in form %}
+                    <div class="form-group mb-3">
+                        <label class="secondary-font">{{ field.label_tag }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
-        <div class="right-group">
-            <div class="right-group-div">
-                <div class="form-group">
-                    <label>Session Types:</label>
-                    {% for choice in form.session_type %}
-                        <div class="form-check">
-                            {{ choice.tag }} {{ choice.choice_label }}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="right-group-div">
-                <div class="form-group">
-                    <label>Group Dynamics Preference:</label>
-                    {% for choice in form.dynamics %}
-                        <div class="form-check">
-                            {{ choice.tag }} {{ choice.choice_label }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    {{ form.location.label_tag }} {{ form.location }}
-                </div>
-            </div>
-
-            <div class="right-group-div">
-                <button type="submit" class="btn btn-primary">Finalize and Create Group</button>
-            </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Create Group</button>
         </div>
     </form>
 </div>

@@ -1,5 +1,13 @@
-html {
-    height: 100%; /* Set the height to 100% for the root element */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
 
@@ -82,9 +90,6 @@ a, a:visited {
 }
 
 /* Apply hover effect for all anchor tags */
-a:hover {
-    text-decoration: underline;
-}
 .primary-font {
     color: #0984B5;
 }
@@ -191,7 +196,7 @@ nav-title h1 {
 }
 
 .edit-profile-form {
-    background-color: #FFFFFF;
+    background-color: #89DFFF;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -202,7 +207,7 @@ nav-title h1 {
 }
 
 .profile-courses, .profile-groups {
-    background-color: #FFFFFF;
+    background-color: #89DFFF;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -278,3 +283,241 @@ nav-title h1 {
     padding: 10px;
     gap: 16px;
 }
+
+.messages {
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Style for success messages */
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+/* Style for error messages */
+.message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Style for warning messages */
+.message.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+/* Style for info messages */
+.message.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.create-group-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 40px; /* Increased gap between columns */
+    margin: 0 auto;
+    max-width: 1024px; /* Adjust as needed */
+    padding: 20px; /* Padding around the container */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Spacing between form elements */
+}
+
+.edit-profile-form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px; /* Spacing between form elements */
+}
+
+.form-control {
+    border-radius: 5px; /* Slightly rounded borders for input fields */
+}
+
+.btn-primary {
+    width: 100%; /* Full-width button */
+    border-radius: 5px;
+}
+
+.index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.group-search {
+    background-color: #E8F5FF; /* Light blue background */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    border-radius: 8px; /* Rounded corners */
+}
+
+.groups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B9DFFF; /* Blue background */
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 0; /* Add padding to ensure the background color shows */
+    border-radius: 8px; /* Add rounded corners */
+}
+
+
+.add-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; 
+    height: 50px;
+    background-color: #B9DFFF; /* Adjust as needed */
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.bottom-index {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.upcoming, .quote {
+    flex: 1;
+    background-color: #B9DFFF;
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add specific styles for li elements within .groups */
+.groups ul {
+    padding: 0;
+}
+
+.groups ul li {
+    list-style: none;
+}
+
+/* Apply hover effect for the add group icon */
+.add-group:hover {
+    background-color: #A0C4FF; /* Lighter shade for hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bottom-index {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upcoming, .quote {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a, a:visited {
+    color: #0984B5; /* Or any color you have set for your links */
+    text-decoration: none; /* If you want to remove the underline from links */
+}
+.add-group h1 {
+    margin: 0;
+    font-size: 4rem; /* Adjust size as needed */
+    color: #0984B5; /* White color for the '+' icon */
+}
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #B9DFFF;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+.add-group {
+    width: 50px;
+    height: 50px;
+    background-color: #B9DFFF;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.add-group h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: #0984B5;
+}
+
+/* Add specific styles for ul elements within .groups */
+.groups ul {
+    padding: 0;
+    margin: 0; /* Remove default margin */
+    list-style: none; /* Remove default list styles */
+}
+
+.add-group {
+    text-decoration: none;
+}
+
+.add-group div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Fully circular */
+    background-color: #0984B5; /* Blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px; /* Space from the text */
+}
+
+.add-group span {
+    font-size: 30px;
+    color: white; /* White plus sign */
+}
+
+.add-group div + div { /* This targets the "Create New" text */
+    color: black; /* Black text */
+}
+
