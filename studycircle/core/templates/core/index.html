@@ -1,8 +1,67 @@
 {% extends 'layout.html' %}
-
+{% load static %}
 {% block title %}StudyCircle{% endblock %}
 
 {% block content %}
-    <h2>Homepage</h2>
-    <a href="{% url 'groups:create_group' %}"><h1 class="primary-font">groups</h1></a>
+<div class="index-container">
+    <!-- Group Search with primary-font class -->
+    <div class="group-search primary-font" style="background-color: #0056b3; text-align: center; padding: 10px 20px; border-radius: 25px;">
+        <a href="{% url 'groups:group_search' %}" style="color: white; text-decoration: none; font-size: 20px; font-weight: bold;">Group Search</a>
+    </div>
+    
+
+    <!-- Groups div with background color -->
+    <div class="groups primary-font" style="background-color: #B9DFFF; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; padding: 20px;">
+        <h2 class="primary-font" style="flex-basis: 100%; text-align: center; margin-bottom: 20px;">My Study Groups</h2>
+        <ul class="primary-font" style="padding: 0; list-style-type: none; display: flex; gap: 20px;">
+            <!-- Iterate over user_groups to list all groups the user is part of -->
+            {% for user_group in user_groups %}
+                <li style="text-align: center;">
+                    <!-- Link to the group detail page with image -->
+                    <a href="{% url 'groups:group_detail' pk=user_group.group.pk %}" style="text-decoration: none; color: black;">
+                        <img src="{% static 'images/group.png' %}" alt="{{ user_group.group.name }}" style="width: 80px; height: 80px; border: 2px solid black; border-radius: 50%; margin-bottom: 8px;">
+                        <div class="primary-font">{{ user_group.group.name }}</div>
+                    </a>
+                </li>
+            {% empty %}
+                <!-- If there are no groups, display nothing -->
+            {% endfor %}
+            <!-- Link to create a new group, retain the styling for the plus button -->
+            <li style="align-items: center; margin-left: 50px; margin-top: 18px;">
+                <a class="add-group" href="{% url 'groups:create_group' %}">
+                    <div>
+                        <span>+</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Bottom Index Section -->
+    <div class="bottom-index" style="display: flex; justify-content: space-between; padding: 20px;">
+        <!-- Upcoming Study Sessions Styled as Cards -->
+        <div class="upcoming" style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+            <h2 class="primary-font" style="background-color: #E8F5FF; padding: 10px 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">Your Upcoming Study Sessions</h2>
+            {% for group_detail in group_details %}
+                <div style="background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                    <div style="font-size: 0.9em;" class="primary-font">
+                        <strong>{{ group_detail.meeting_date }}</strong><br>
+                        {{ group_detail.name }}
+                    </div>
+                    <div style="text-align: right;" class="primary-font">
+                        {{ group_detail.meeting_time }}<br>
+                        {{ group_detail.location }}
+                    </div>
+                </div>
+            {% empty %}
+                <div style="background-color: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">No upcoming study sessions.</div>
+            {% endfor %}
+        </div>
+
+        <!-- Quote Section -->
+        <div class="quote primary-font" style="flex-grow: 1; padding: 20px; font-size: 1.2em; font-weight: bold; background-color: #E8F5FF; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <p>"BOOST YOUR STUDY EFFICIENCY BY LEVERAGING THE POMODORO TECHNIQUE: STUDY FOR 25 MINUTES, THEN TAKE A 5-MINUTE BREAK. THIS CAN HELP IMPROVE CONCENTRATION AND PREVENT BURNOUT."</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

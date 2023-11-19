@@ -1,16 +1,88 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    <h2>User Profile</h2>
-    <p>Username: {{user.username}}</p>
-    <p>Email: {{user.email}}</p>
-    <p>Major: {{user.major}}</p>
-    <p>Degree: {{user.degree}}</p>
+<div class="container-profile-page" style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+    <!-- Profile photo -->
+    <div style="flex-shrink: 0; padding-right: 20px;">
+        <img src="{% static 'images/profile-user.png' %}" alt="Profile Photo" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    </div>
+    
+    <!-- Edit Profile Form -->
+    <div class="edit-profile-form" style="flex-grow: 1; width: 100%; max-width: 600px;">
+        <form action="{% url 'users:edit_profile' %}" method="post">
+            {% csrf_token %}
+            <p>Username: <input class="form-control" type="text" name="new_username" placeholder="Change Username" value="{{ user.username }}"></p>
+            <p>Email: <input class="form-control" type="email" name="new_email" placeholder="Change Email" value="{{ user.email }}"></p>
+            <p>Major: <input class="form-control" type="text" name="major" placeholder="Change Major" value="{{ user.major }}"></p>
+            <p>Degree: <input class="form-control" type="text" name="degree" placeholder="Change Degree" value="{{ user.degree }}"></p>
+            <input class="btn btn-primary" type="submit" value="Save Changes">
+        </form> 
+    </div>
+</div>
 
-    <a href="{% url 'users:edit_profile' %}" class="secondary-font">
-        <input class="btn btn-primary" type="submit" value="Edit Profile">
-    </a>
-    <!-- You can add more user details here -->
+<div class="courses-groups-container" style="display: flex; justify-content: space-around; width: 100%;">
+    <div class="profile-courses" style="margin-bottom: 20px;">
+        <h3>Enrolled Courses</h3>
+        <ul class="profile-list">
+            {% for user_course in enrolled_courses %}
+                <li>
+                    {{ user_course.course.department }} {{ user_course.course.level }}
+                    <!-- Delete Course Form -->
+                    <form action="{% url 'users:delete_course' user_course.course.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>No courses enrolled.</li>
+            {% endfor %}
+        </ul>
+        <h3>Add a Course</h3>
+        <form action="{% url 'users:add_course' %}" method="post">
+            {% csrf_token %}
+            <select class="form-control" name="course_id">
+                <option value="">--- Select a Course ---</option>
+                {% for course in courses %}
+                    <option value="{{ course.id }}">{{ course.department }} {{ course.level }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-primary" type="submit" value="Add Course">
+        </form>
+    </div>
+    
+    <div class="profile-groups" style="margin-bottom: 20px;">
+        <h3>Study Groups</h3>
+        <ul class="profile-list">
+            {% for user_group in enrolled_groups %}
+                <li>
+                    {{ user_group.group.name }}
+                    <!-- Delete Group Form -->
+                    <form action="{% url 'users:delete_group' user_group.group.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Leave</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>No study groups joined.</li>
+            {% endfor %}
+        </ul>
+        <h3>Add a Study Group</h3>
+        <form action="{% url 'users:profile' %}" method="post">
+            {% csrf_token %}
+            <select class="form-control" name="group_id">
+                <option value="">--- Select a Study Group ---</option>
+                {% for group in available_groups %}
+                    <option value="{{ group.id }}">{{ group.name }}</option>
+                {% endfor %}
+            </select>
+            <input class="btn btn-primary" type="submit" value="Join Group">
+        </form>
+    </div>
+</div>
+
+
+
 {% endblock %}
