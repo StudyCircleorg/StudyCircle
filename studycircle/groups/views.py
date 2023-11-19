@@ -80,23 +80,27 @@ def leave_group_view(request, group_id):
 
 def group_search_view(request):
     # Initialize an empty queryset for groups
-    groups = Group.objects.none()
+    groups = Group.objects.all()  # Start with all groups
 
     # Get search query and filter options from request
     search_query = request.GET.get('search', '')
     filter_dynamics = request.GET.get('dynamics', '')
     filter_location = request.GET.get('location', '')
 
-    # Apply filters only if they are provided
+    # Build a dynamic query using Q objects
+    query = Q()  # Start with an empty query
+
     if filter_dynamics:
-        groups = groups.filter(dynamics=filter_dynamics)
+        query &= Q(dynamics=filter_dynamics)
 
     if filter_location:
-        groups = groups.filter(location=filter_location)
+        query &= Q(location=filter_location)
 
-    # Apply the search query filter if it's provided
     if search_query:
-        groups = Group.objects.filter(name__icontains=search_query)
+        query &= Q(name__icontains=search_query)
+
+    # Apply the dynamic query to the groups queryset
+    groups = groups.filter(query)
 
     # Get dynamics and locations for the filter options
     dynamics_choices = Group._meta.get_field('dynamics').choices
