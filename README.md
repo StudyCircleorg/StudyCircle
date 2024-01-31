@@ -13,7 +13,7 @@ Welcome to the **Study Group Matcher/Finder**, a web application dedicated to co
 
 ### 💻 Technologies
 - **Backend**: Python Django
-- **Frontend/UI**: Figma
+- **Frontend/UI**: Figma, React.js
 - **Version Control**: GitHub
 
 📄 License
